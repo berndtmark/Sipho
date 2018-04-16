@@ -1,0 +1,11 @@
+{
+  "name": "discord",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "author": "mberndt",
+  "dependencies": {
+    "discord.js": "^11.3.2",
+    "winston": "^2.4.1"
+  }
+}
