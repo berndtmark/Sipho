@@ -1,12 +1,13 @@
 const discord = require('discord.js');
 const logger = require('winston');
 const config = require("./config.json");
+const messageReplies = require("./messages.js")
 
 logger.remove(logger.transports.Console);
 logger.add(logger.transports.Console, {
-    colorize: true
+    colorize: true,
+    level: 'debug'
 });
-level = 'debug';
 
 const client = new discord.Client();
 
@@ -15,9 +16,10 @@ client.on('ready', () => {
 });
 
 client.on('message', (message) => {
-    logger.info(`${message}`);
-    if (message == 'Hello Sipho') {
-        message.channel.send('Molo Boetie!');
+    logger.debug(`${message}`);
+
+    if(messageReplies.messages[message.content]) {
+        message.channel.send(messageReplies.messages[message.content]);
     }
 });
 
